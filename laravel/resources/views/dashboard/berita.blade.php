@@ -287,7 +287,7 @@
                                             <th>Gambar</th>
                                             <th>Judul</th>
                                             <th>Konten</th>
-                                            <th colspan="2">Aksi</th>
+                                            <th colspan="2">Aksi</th> 
                                         </tr>
                                         @foreach($data as $row)
                                         <tr>
