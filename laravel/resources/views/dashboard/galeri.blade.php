@@ -274,9 +274,9 @@
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3 d-flex align-items-center">
-                            <h6 class="m-0 font-weight-bold text-primary mr-auto">DataTables Berita</h6>
-                            <button class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Tambah</button>
+                        <div class="card-header d-flex align-items-center">
+                            <h6 class="font-weight-bold text-primary mr-auto ">DataTables Galeri</h6>
+                            <a href=""><button class="btn btn-success">Tambah</button></a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -285,17 +285,13 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Gambar</th>
-                                            <th>Judul</th>
-                                            <th>Konten</th>
                                             <th colspan="2">Aksi</th>
                                         </tr>
                                         @foreach($data as $row)
                                         <tr>
                                             <td>{{ ++$i}}</td>
-                                            <td><img src="{{ ('assets/img/'.$row->gambar) }}" height="50" alt=""></td>
-                                            <td>{{ $row->judul }}</td>
-                                            <td>{{ $row->konten }}</td>
-                                            <td>
+                                            <td> <img src="{{ ('assets/img/'.$row->gambar) }}" height="200" alt=""></td>
+                                            <td>                                        
                                                 <button type="text" class="btn btn-primary">Edit</button>
                                                 <button type="text" class="btn btn-danger">Hapus</button>
                                             </td>
@@ -305,33 +301,6 @@
 
                                 </table>
                             </div>
-                        </div>
-                    </div>
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Tambah</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control mb-3" placeholder="Judul" required>
-                                    <input type="text" class="form-control" placeholder="Konten" required>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                            <button type="button" class="btn btn-primary">Simpan</button>
-                            </div>
-                        </div>
                         </div>
                     </div>
 

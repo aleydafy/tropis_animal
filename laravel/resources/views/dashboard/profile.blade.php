@@ -66,7 +66,7 @@
             </li>
 
             <li class="nav-item active">
-                <a class="nav-link" href="/dashboardGaleri">
+                <a class="nav-link" href="tables.html">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Galeri</span></a>
             </li>
@@ -275,7 +275,7 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 d-flex align-items-center">
-                            <h6 class="m-0 font-weight-bold text-primary mr-auto">DataTables Berita</h6>
+                            <h6 class="m-0 font-weight-bold text-primary mr-auto">DataTables Profile</h6>
                             <button class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Tambah</button>
                         </div>
                         <div class="card-body">
@@ -284,18 +284,16 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Gambar</th>
                                             <th>Judul</th>
-                                            <th>Konten</th>
+                                            <th>Deskripsi</th>
                                             <th colspan="2">Aksi</th>
                                         </tr>
                                         @foreach($data as $row)
                                         <tr>
                                             <td>{{ ++$i}}</td>
-                                            <td><img src="{{ ('assets/img/'.$row->gambar) }}" height="50" alt=""></td>
                                             <td>{{ $row->judul }}</td>
-                                            <td>{{ $row->konten }}</td>
-                                            <td>
+                                            <td>{{ $row->Deskripsi }}</td>
+                                            <td>                                        
                                                 <button type="text" class="btn btn-primary">Edit</button>
                                                 <button type="text" class="btn btn-danger">Hapus</button>
                                             </td>
@@ -307,6 +305,8 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Modal -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                         <div class="modal-content">
@@ -317,14 +317,9 @@
                             </button>
                             </div>
                             <div class="modal-body">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-                                    </div>
-                                </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control mb-3" placeholder="Judul" required>
-                                    <input type="text" class="form-control" placeholder="Konten" required>
+                                    <input type="text" class="form-control mb-2" placeholder="Judul" required>
+                                    <textarea class="form-control" name="" id="" cols="30" rows="10" placeholder="Deskripsi"></textarea>
                                 </div>
                             </div>
                             <div class="modal-footer">

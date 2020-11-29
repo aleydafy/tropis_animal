@@ -17,22 +17,12 @@ class DashboardBeritaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $data = Berita::all();
-        if ($request->ajax()) {
-            return Datatable::of($data)
-            ->addColumn('action', function($row){ 
-              $btn = '<a href="javascript:void(0)" data-toggle="tooltip" data-id="'.$row->id.'" class="btn btn-outline-success edit"><i class="fa fa-pencil" data-toggle="tooltip" title="Edit"></i></a>'; 
-              $btn = $btn.'  <a href="javascript:void(0)" data-toggle="tooltip" id="'.$row->id.'" class="btn btn-outline-danger delete"><i class="fa fa-trash" data-toggle="tooltip" title="Delete"></i></a>'; 
-              return $btn; 
-         })
-            ->rawColumns(['action'])
-            ->addIndexColumn()
-            ->make(true);
-        }
+      $data = Berita::whereNotIn('id', [7])->get();
+      $beritaBaru = Berita::orderBy('created_at', 'desc')->limit(1)->first();
 
-        return view('dashboard.berita');
+      return view('dashboard.berita', compact('data', 'beritaBaru'))->with('i', (request()->input('page', 1) - 1));
     }
 
     /**

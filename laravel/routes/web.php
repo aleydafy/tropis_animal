@@ -32,3 +32,6 @@ Route::get('dashboardProfile/{id}/edit/', [App\Http\Controllers\DashboardProfile
 
 Route::resource('dashboardBerita', App\Http\Controllers\DashboardBeritaController::class);
 Route::get('dashboardBerita/{id}/edit/', [App\Http\Controllers\DashboardBeritaController::class, 'edit']);
+
+Route::resource('dashboardGaleri', App\Http\Controllers\DashboardGaleriController::class);
+Route::get('dashboardGaleri/{id}/edit/', [App\Http\Controllers\DashboardGaleriController::class, 'edit']);
