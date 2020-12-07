@@ -276,7 +276,7 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 d-flex align-items-center">
                             <h6 class="m-0 font-weight-bold text-primary mr-auto">DataTables Profile</h6>
-                            <button class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Tambah</button>
+                            <a href="/create-profile"><button class="btn btn-success">Tambah</button></a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">

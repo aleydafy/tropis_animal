@@ -31,7 +31,7 @@ class DashboardProfileController extends Controller
      */
     public function create()
     {
-        //
+        return view('create-profile');
     }
 
     /**
@@ -42,14 +42,16 @@ class DashboardProfileController extends Controller
      */
     public function store(Request $request)
     {
-        $id = $request->id;
-        $data = Profile::updateOrCreate(['id' => $id],
-                ['urutan' => $request->urutan,
-                'judul' => $request->judul,
-                'deskripsi' => $request->deskripsi
-            ]);
+        $request->validate([
+            'id' => 'required',
+            'judul' => 'required',
+            'deskripsi' => 'required',
+        ]);
 
-        return Response::json($data);
+        Profile::create($request->all());
+
+        return redirect()->route('dashboardProfile')
+                        ->with('success','Post created successfully.');
     }
 
     /**

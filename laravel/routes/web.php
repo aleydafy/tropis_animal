@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AnimalController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
@@ -37,5 +37,4 @@ Route::get('dashboardBerita/{id}/edit/', [App\Http\Controllers\DashboardBeritaCo
 Route::resource('dashboardGaleri', App\Http\Controllers\DashboardGaleriController::class);
 Route::get('dashboardGaleri/{id}/edit/', [App\Http\Controllers\DashboardGaleriController::class, 'edit']);
 
-Route::get('addPost', [App\Http\Controllers\ProfileController::class, 'create']);
-Route::post('create-post', [App\Http\Controllers\ProfileController::class, 'createPost'])->name('post.create');
+Route::get('create-profile', [App\Http\Controllers\DashboardProfileController::class, 'create']);

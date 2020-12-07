@@ -21,16 +21,6 @@ class ProfileController extends Controller
         return view('create-post');
     }
 
-    public function createPost(Request $request)
-    {
-        $post = new Profile();
-        $post->judul = $request->judul;
-        $post->deskripsi = $request->deskripsi;
-        $post->save();
-        return back()->with('post_created', 'Post has been created');
-        
-    }
-
     public function store(Request $request)
     {   
         $data=$request->validate([
