@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use DataTables;
 use Carbon\Carbon;
-use App\Models\Berita;
+use App\Models\Galeri;
 use File;
 use Illuminate\Support\Facades\Cache;
 use Redirect, Response;
 
-class DashboardBeritaController extends Controller
+class DashboardGaleriController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,10 +20,10 @@ class DashboardBeritaController extends Controller
      */
     public function index()
     {
-      $data = Berita::whereNotIn('id', [7])->get();
-      $beritaBaru = Berita::orderBy('created_at', 'desc')->limit(1)->first();
+      $data = Galeri::whereNotIn('id', [7])->get();
+      $GaleriBaru = Galeri::orderBy('created_at', 'desc')->limit(1)->first();
 
-      return view('dashboard.berita', compact('data', 'beritaBaru'))->with('i', (request()->input('page', 1) - 1));
+      return view('dashboard.Galeri', compact('data', 'GaleriBaru'))->with('i', (request()->input('page', 1) - 1));
     }
 
     /**

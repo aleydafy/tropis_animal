@@ -18,20 +18,10 @@ class DashboardProfileController extends Controller
      */
     public function index(Request $request)
     {
-        $data = Profile::all();
-        if ($request->ajax()) {
-            return Datatables::of($data)
-            ->addColumn('action', function($row){ 
-              $btn = '<a href="javascript:void(0)" data-toggle="tooltip" data-id="'.$row->id.'" class="btn btn-outline-success edit"><i class="fa fa-pencil" data-toggle="tooltip" title="Edit"></i></a>'; 
-              $btn = $btn.'  <a href="javascript:void(0)" data-toggle="tooltip" id="'.$row->id.'" class="btn btn-outline-danger delete"><i class="fa fa-trash" data-toggle="tooltip" title="Delete"></i></a>'; 
-              return $btn; 
-         })
-            ->rawColumns(['action'])
-            ->addIndexColumn()
-            ->make(true);
-        }
+      $data = profile::whereNotIn('id', [7])->get();
+      $profileBaru = profile::orderBy('created_at', 'desc')->limit(1)->first();
 
-        return view('dashboard.profile');
+      return view('dashboard.profile', compact('data', 'profileBaru'))->with('i', (request()->input('page', 1) - 1));
     }
 
     /**
@@ -41,7 +31,7 @@ class DashboardProfileController extends Controller
      */
     public function create()
     {
-        //
+        return view('create-profile');
     }
 
     /**
@@ -52,14 +42,16 @@ class DashboardProfileController extends Controller
      */
     public function store(Request $request)
     {
-        $id = $request->id;
-        $data = Profile::updateOrCreate(['id' => $id],
-                ['urutan' => $request->urutan,
-                'judul' => $request->judul,
-                'deskripsi' => $request->deskripsi
-            ]);
+        $request->validate([
+            'id' => 'required',
+            'judul' => 'required',
+            'deskripsi' => 'required',
+        ]);
 
-        return Response::json($data);
+        Profile::create($request->all());
+
+        return redirect()->route('dashboardProfile')
+                        ->with('success','Post created successfully.');
     }
 
     /**
