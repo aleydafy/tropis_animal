@@ -69,9 +69,9 @@ class DashboardProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Profile $profile)
     {
-        
+        return view('edit-profile', compact('profile'));
     }
 
     /**
@@ -81,9 +81,14 @@ class DashboardProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Profile $profile)
     {
-        //
+        $request->validate([
+
+        ]);
+
+        $profile->update($request->all());
+        return redirect()->route('profile.index')->with('success', 'Profile telah di Update');
     }
 
     /**
