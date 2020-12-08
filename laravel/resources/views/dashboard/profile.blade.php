@@ -276,7 +276,7 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 d-flex align-items-center">
                             <h6 class="m-0 font-weight-bold text-primary mr-auto">DataTables Profile</h6>
-                            <button class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Tambah</button>
+                            <a href="/create-profile"><button class="btn btn-success">Tambah</button></a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -288,14 +288,17 @@
                                             <th>Deskripsi</th>
                                             <th colspan="2">Aksi</th>
                                         </tr>
-                                        @foreach($data as $row)
+                                        @foreach($profiles as $row)
                                         <tr>
-                                            <td>{{ ++$i}}</td>
+                                            <td>{{ ++$row->id}}</td>
                                             <td>{{ $row->judul }}</td>
                                             <td>{{ $row->Deskripsi }}</td>
                                             <td>                                        
-                                                <button type="text" class="btn btn-primary">Edit</button>
-                                                <button type="text" class="btn btn-danger">Hapus</button>
+                                                <form action="{{ route('dashboardProfile.destroy', $row->id)}}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="btn btn-danger" type="submit">Delete</button>
+                                                </form>
                                             </td>
                                         </tr>
                                         @endforeach
