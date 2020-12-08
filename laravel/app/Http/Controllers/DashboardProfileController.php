@@ -18,10 +18,9 @@ class DashboardProfileController extends Controller
      */
     public function index(Request $request)
     {
-      $data = profile::whereNotIn('id', [7])->get();
-      $profileBaru = profile::orderBy('created_at', 'desc')->limit(1)->first();
-
-      return view('dashboard.profile', compact('data', 'profileBaru'))->with('i', (request()->input('page', 1) - 1));
+        $profiles = Profile::first()->paginate(10);
+        return view('dashboard.profile', compact('profiles'))
+        ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     /**
@@ -43,14 +42,13 @@ class DashboardProfileController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'id' => 'required',
             'judul' => 'required',
             'deskripsi' => 'required',
         ]);
 
         Profile::create($request->all());
 
-        return redirect()->route('dashboardProfile')
+        return redirect()->route('dashboardProfile.dashboard')
                         ->with('success','Post created successfully.');
     }
 
@@ -73,10 +71,7 @@ class DashboardProfileController extends Controller
      */
     public function edit($id)
     {
-        $where = array('id' => $id);
-        $data  = Profile::where($where)->first();
-     
-        return Response::json($data);
+        
     }
 
     /**
@@ -97,9 +92,9 @@ class DashboardProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Profile $profile)
     {
-        $data = Profile::find($id);
-        $data->delete();
+        $profile->delete();
+        return redirect()->route('profile.index')->with('success', 'Profile berhasil didelete');
     }
 }

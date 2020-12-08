@@ -18,10 +18,6 @@
         <form action="{{ route('profile.store')}}" method="POST">
             @csrf
             <div class="form-group">
-                <label for="id">id</label>
-                <input type="text" name="id" class="form-control" placeholder="Masukan id">
-            </div>
-            <div class="form-group">
                 <label for="judul">Judul</label>
                 <input type="text" name="judul" class="form-control" placeholder="Masukan Judul">
             </div>
