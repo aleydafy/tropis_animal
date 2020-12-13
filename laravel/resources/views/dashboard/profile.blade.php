@@ -295,8 +295,11 @@
                                             <td>{{ $row->Deskripsi }}</td>
                                             <td>                                        
                                                 <form action="{{ route('dashboardProfile.destroy', $row->id)}}" method="POST">
+                                                    <a href="{{ route('dashboardProfile.edit', $row->id)}}" class="btn btn-primary">Edit</a>
+                                                    
                                                     @csrf
                                                     @method('DELETE')
+
                                                     <button class="btn btn-danger" type="submit">Delete</button>
                                                 </form>
                                             </td>
