@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Berita;
+use Illuminate\Support\Facades\Storage;
+
 
 class BeritaController extends Controller
 {
@@ -13,7 +16,8 @@ class BeritaController extends Controller
      */
     public function index()
     {
-        return view('berita');
+        $berita = Berita::latest()->paginate(1);
+        return view('berita', compact('berita'));
     }
 
     /**

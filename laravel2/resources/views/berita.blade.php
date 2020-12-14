@@ -80,8 +80,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="col-md-6 boostrap-icons-left">
 				<div class="boostrap-icons-grids">
 					<div class="col-xs-10 boostrap-icons-grid">
-						{{-- <h2>{{ $beritaBaru['judul'] }}</h2>
-						<p class="tentang">{{ $beritaBaru['konten'] }}</p> --}}
+                        @foreach ($berita as $item)
+                            <h2>{{ $item['judul'] }}</h2>
+                            <p class="tentang">{{ $item['konten'] }}</p>   
+                        @endforeach
+						
 					</div>
 					<div class="clearfix"> </div>
 					<br><br>
@@ -101,20 +104,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="col-xs-10 boostrap-icons-grid">
 				<h2>Berita Lainnya</h2><br>
 			</div><br>
-			<div class="row">
-				{{-- @foreach($data as $row)
+        </div>
+        <div class="row">
+            @foreach($berita as $row)
 				<div class="col-md-4 mb-3">
 					<div class="card" style="width: 30rem;">
-  						<img src="{{ asset('assets/img/'.$row->gambar) }}" class="card-img-top" alt="...">
-						<div class="card-body">
+                        <img src="{{ Storage::url('public/blogs/').$row->image }}" class="img-fluid" alt="...">
 							<h5 class="card-title">{{ $row->judul }}</h5>
 							<p class="card-text">{{ $row->konten }}</p>
 						</div>
 					</div>
 				</div>
-				@endforeach --}}
-			</div>
-		</div>
+				@endforeach
+        </div>
 	</div>
 </div>
 <!-- //boostrap-icons -->

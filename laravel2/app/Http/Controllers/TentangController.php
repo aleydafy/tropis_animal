@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Profile;
 
 class TentangController extends Controller
 {
@@ -13,7 +14,8 @@ class TentangController extends Controller
      */
     public function index()
     {
-        return view('tentang');
+        $tentang = Profile::latest()->paginate(1);
+        return view('tentang', compact('tentang'));
     }
 
     /**

@@ -67,8 +67,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="col-md-6 boostrap-icons-left">
 				<div class="boostrap-icons-grids">
 					<div class="col-xs-10 boostrap-icons-grid">
-						{{-- <h2>{{ $profileBaru['judul'] }}</h2>
-						<p class="tentang">{{ $profileBaru['Deskripsi'] }}</p> --}}
+						@foreach ($tentang as $item)
+                            <h2>{{ $item['judul'] }}</h2>
+                            <p class="tentang">{{ $item['Deskripsi'] }}</p>
+                        @endforeach
 					</div>
 					<div class="clearfix"> </div>
 				</div>
@@ -76,17 +78,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="col-md-6 boostrap-icons-right">
 				<img src="assets/img/kyaw-tun-_YIX48_4hgs-unsplash.png" alt=" " class="img-responsive" style="width: 450px;"/>
 			</div>
-			{{-- @foreach($data as $row)
-			<div class="col-xs-10 boostrap-icons-grid">
-				<h2>{{ $row->judul }}</h2>
-				<p class="tentang">{{ $row->Deskripsi }}</p>
-			</div>
-			@endforeach --}}
-			<div class="clearfix"> </div>
-		</div>
-		<br><br>
-		<div class="donatess">
-			<a href="/dashboardProfile">Edit</a>
 		</div>
 	</div>
 <!-- //boostrap-icons -->
