@@ -52,9 +52,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 		<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="/">Beranda</a></li>
+				<li><a href="/">Beranda</a></li>
 				<li><a href="/profile">Tentang</a></li>
-				<li><a href="/berita">Berita</a></li>
+				<li class="active"><a href="/berita">Berita</a></li>
 				<li><a href="/galeri">Galeri</a></li>
 				<li><a href="/kontak">Kontak</a></li>
 			</ul>
@@ -115,11 +115,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="col-md-6 boostrap-icons-left">
 			<div class="boostrap-icons-grids">
 				<div class="col-xs-10 boostrap-icons-grid">
-					@foreach ($berita as $item)
-						<h2>{{ $item['judul'] }}</h2>
-						<p class="tentang">{{ $item['konten'] }}</p>   
-					@endforeach
-					
+					<h2>{{ $beritaTerbaru['judul'] }}</h2>
+					<p class="tentang">{{ $beritaTerbaru['konten'] }}</p>   
 				</div>
 				<div class="clearfix"> </div>
 				<br><br>
