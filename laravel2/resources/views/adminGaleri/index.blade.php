@@ -280,7 +280,7 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 d-flex align-items-center">
                             <h6 class="m-0 font-weight-bold text-primary mr-auto">DataTables Berita</h6>
-                            <a href="{{ route('news.create')}}"><button class="btn btn-success">Tambah</button></a>
+                            <a href="{{ route('galeri.create')}}"><button class="btn btn-success">Tambah</button></a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -288,20 +288,16 @@
                                     <thead>
                                         <tr>
                                             <th>Gambar</th>
-                                            <th>Judul</th>
-                                            <th>Konten</th>
                                             <th colspan="2">Aksi</th>
                                         </tr>
-                                        @forelse($berita as $row)
+                                        @forelse($galeri as $row)
                                         <tr>
                                             <td class="text-center">
                                                 <img src="{{ Storage::url('public/blogs/').$row->image }}" class="rounded" height="200px">
                                             </td>
-                                            <td>{{ $row->judul }}</td>
-                                            <td>{{ $row->konten }}</td>
                                             <td>                                        
-                                                <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('news.destroy', $row->id) }}" method="POST">
-                                                    <a href="{{ route('news.edit', $row->id) }}" class="btn btn-primary">Edit</a>
+                                                <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('galeri.destroy', $row->id) }}" method="POST">
+                                                    <a href="{{ route('galeri.edit', $row->id) }}" class="btn btn-primary">Edit</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger">HAPUS</button>
@@ -315,7 +311,7 @@
                                     @endforelse
                                     </thead>
                                 </table>
-                                {{ $berita->links() }}
+                                {{ $galeri->links() }}
                             </div>
                         </div>
                     </div>

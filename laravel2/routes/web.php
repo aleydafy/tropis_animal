@@ -19,4 +19,5 @@ Route::get('/', function () {
 
 Route::resource('blog', BlogController::class);
 Route::resource('profile', DashboardProfileController::class);
-Route::resource('berita', DashboardBeritaController::class);
+Route::resource('news', DashboardNewsController::class);
+Route::resource('galeri', DashboardGaleriController::class);

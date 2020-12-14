@@ -6,7 +6,7 @@ use App\Models\Berita;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class DashboardBeritaController extends Controller
+class DashboardNewsController extends Controller
 {    
     /**
      * index
@@ -55,32 +55,32 @@ class DashboardBeritaController extends Controller
 
         if($berita){
             //redirect dengan pesan sukses
-            return redirect()->route('berita.index')->with(['success' => 'Data Berhasil Disimpan!']);
+            return redirect()->route('news.index')->with(['success' => 'Data Berhasil Disimpan!']);
         }else{
             //redirect dengan pesan error
-            return redirect()->route('berita.index')->with(['error' => 'Data Gagal Disimpan!']);
+            return redirect()->route('news.index')->with(['error' => 'Data Gagal Disimpan!']);
         }
     }
     
     /**
      * edit
      *
-     * @param  mixed $berita
+     * @param  mixed $news
      * @return void
      */
-    public function edit(Berita $berita)
+    public function edit(Berita $news)
     {
-        return view('adminBerita.edit', compact('berita'));
+        return view('adminBerita.edit', compact('news'));
     }
     
     /**
      * update
      *
      * @param  mixed $request
-     * @param  mixed $berita
+     * @param  mixed $news
      * @return void
      */
-    public function update(Request $request, Berita $berita)
+    public function update(Request $request, Berita $news)
     {
         $this->validate($request, [
             'judul'     => 'required',
@@ -88,11 +88,11 @@ class DashboardBeritaController extends Controller
         ]);
 
         //get data Blog by ID
-        $berita = Berita::findOrFail($berita->id);
+        $news = Berita::findOrFail($news->id);
 
         if($request->file('image') == "") {
 
-            $berita->update([
+            $news->update([
                 'judul'     => $request->judul,
                 'konten'   => $request->konten
             ]);
@@ -100,13 +100,13 @@ class DashboardBeritaController extends Controller
         } else {
 
             //hapus old image
-            Storage::disk('local')->delete('public/blogs/'.$berita->image);
+            Storage::disk('local')->delete('public/blogs/'.$news->image);
 
             //upload new image
             $image = $request->file('image');
             $image->storeAs('public/blogs', $image->hashName());
 
-            $berita->update([
+            $news->update([
                 'image'     => $image->hashName(),
                 'judul'     => $request->judul,
                 'konten'   => $request->konten
@@ -114,12 +114,12 @@ class DashboardBeritaController extends Controller
             
         }
 
-        if($berita){
+        if($news){
             //redirect dengan pesan sukses
-            return redirect()->route('berita.index')->with(['success' => 'Data Berhasil Diupdate!']);
+            return redirect()->route('news.index')->with(['success' => 'Data Berhasil Diupdate!']);
         }else{
             //redirect dengan pesan error
-            return redirect()->route('berita.index')->with(['error' => 'Data Gagal Diupdate!']);
+            return redirect()->route('news.index')->with(['error' => 'Data Gagal Diupdate!']);
         }
     }
     
@@ -136,10 +136,10 @@ class DashboardBeritaController extends Controller
 
             if($berita){
                 //redirect dengan pesan sukses
-                return redirect()->route('berita.index')->with(['success' => 'Data Berhasil Dihapus!']);
+                return redirect()->route('news.index')->with(['success' => 'Data Berhasil Dihapus!']);
             }else{
                 //redirect dengan pesan error
-                return redirect()->route('berita.index')->with(['error' => 'Data Gagal Dihapus!']);
+                return redirect()->route('news.index')->with(['error' => 'Data Gagal Dihapus!']);
             }
     }
 
