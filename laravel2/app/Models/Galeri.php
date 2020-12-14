@@ -17,5 +17,5 @@ class Galeri extends Model
 
     protected $table = 't_galeri';
 
-    protected $fillable = ['image'];
+    protected $fillable = ['id','image'];
 }

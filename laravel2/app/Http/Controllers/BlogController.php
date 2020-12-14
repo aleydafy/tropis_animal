@@ -39,8 +39,6 @@ class BlogController extends Controller
     {
         $this->validate($request, [
             'image'     => 'required|image|mimes:png,jpg,jpeg',
-            'title'     => 'required',
-            'content'   => 'required'
         ]);
 
         //upload image
@@ -48,9 +46,7 @@ class BlogController extends Controller
         $image->storeAs('public/blogs', $image->hashName());
 
         $blog = Blog::create([
-            'image'     => $image->hashName(),
-            'title'     => $request->title,
-            'content'   => $request->content
+            'image'     => $image->hashName()
         ]);
 
         if($blog){
@@ -82,10 +78,6 @@ class BlogController extends Controller
      */
     public function update(Request $request, Blog $blog)
     {
-        $this->validate($request, [
-            'title'     => 'required',
-            'content'   => 'required'
-        ]);
 
         //get data Blog by ID
         $blog = Blog::findOrFail($blog->id);
@@ -93,8 +85,8 @@ class BlogController extends Controller
         if($request->file('image') == "") {
 
             $blog->update([
-                'title'     => $request->title,
-                'content'   => $request->content
+                // 'title'     => $request->title,
+                // 'content'   => $request->content
             ]);
 
         } else {
@@ -108,8 +100,8 @@ class BlogController extends Controller
 
             $blog->update([
                 'image'     => $image->hashName(),
-                'title'     => $request->title,
-                'content'   => $request->content
+                // 'title'     => $request->title,
+                // 'content'   => $request->content
             ]);
             
         }

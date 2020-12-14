@@ -78,12 +78,18 @@ class DashboardGaleriController extends Controller
      */
     public function update(Request $request, Galeri $galeri)
     {
+        $this->validate($request, [
+            'id'     => 'required',
+            'image'     => 'required'
+        ]);
+
+        //get data Blog by ID
         $galeri = Galeri::findOrFail($galeri->id);
 
         if($request->file('image') == "") {
 
-            $galeri->update([
-                'image'     => $request->image,
+            $image->update([
+                'id'     => $request->id,
             ]);
 
         } else {
@@ -92,16 +98,16 @@ class DashboardGaleriController extends Controller
             Storage::disk('local')->delete('public/blogs/'.$galeri->image);
 
             //upload new image
-            $galeri = $request->file('image');
-            $galeri->storeAs('public/blogs', $galeri->hashName());
+            $image = $request->file('image');
+            $image->storeAs('public/blogs', $image->hashName());
 
-            $galeri->update([
-                'image'     => $galeri->hashName(),
+            $image->update([
+                'image'     => $image->hashName(),
             ]);
             
         }
 
-        if($galeri){
+        if($image){
             //redirect dengan pesan sukses
             return redirect()->route('galeri.index')->with(['success' => 'Data Berhasil Diupdate!']);
         }else{
