@@ -13,9 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::resource('/', HomeController::class);
+Route::resource('tentang', TentangController::class);
+Route::resource('berita', BeritaController::class);
+Route::resource('galeri', GaleriController::class);
+Route::resource('kontak', KontakController::class);
+
 
 Route::resource('blog', BlogController::class);
 Route::resource('profile', DashboardProfileController::class);
