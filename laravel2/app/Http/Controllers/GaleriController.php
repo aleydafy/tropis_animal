@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Galeri;
+use App\Models\Blog;
 use Illuminate\Support\Facades\Storage;
 
 class GaleriController extends Controller
@@ -15,7 +15,7 @@ class GaleriController extends Controller
      */
     public function index()
     {
-        $galeri = Galeri::latest()->paginate(20);
+        $galeri = Blog::latest()->paginate(20);
         return view('galeri', compact('galeri'));
     }
 

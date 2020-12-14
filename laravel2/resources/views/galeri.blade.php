@@ -76,95 +76,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<h3>Our Gallery</h3>
 			<div class="gallery-grids">
+				@foreach ($galeri as $item)
 				<div class="col-md-3 gallery-grid">
 					<div class="gallery-grd">
-						<a class="mask" href="images/4.jpg"><img src="images/4.jpg" alt=" " class="img-responsive" /></a>
+							<img src="{{ Storage::url('public/blogs/').$item->image }}" class="img-fluid" height="150px">
+						</div>
 					</div>
-				</div>
-				<div class="col-md-3 gallery-grid">
-					<div class="gallery-grd">
-						<a class="mask" href="images/5.jpg"><img src="images/5.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-				</div>
-				<div class="col-md-3 gallery-grid">
-					<div class="gallery-grd">
-						<a class="mask" href="images/6.jpg"><img src="images/6.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-				</div>
-				<div class="col-md-3 gallery-grid">
-					<div class="gallery-grd">
-						<a class="mask" href="images/10.jpg"><img src="images/10.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-			<div class="gallery-grids">
-				<div class="col-md-3 gallery-grid">
-					<div class="gallery-grd">
-						<a class="mask" href="images/11.jpg"><img src="images/11.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-				</div>
-				<div class="col-md-3 gallery-grid">
-					<div class="gallery-grd">
-						<a class="mask" href="images/12.jpg"><img src="images/12.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-				</div>
-				<div class="col-md-3 gallery-grid">
-					<div class="gallery-grd">
-						<a class="mask" href="images/13.jpg"><img src="images/13.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-				</div>
-				<div class="col-md-3 gallery-grid">
-					<div class="gallery-grd">
-						<a class="mask" href="images/14.jpg"><img src="images/14.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-			<div class="gallery-grids">
-				<div class="col-md-3 gallery-grid">
-					<div class="gallery-grd">
-						<a class="mask" href="images/15.jpg"><img src="images/15.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-				</div>
-				<div class="col-md-3 gallery-grid">
-					<div class="gallery-grd">
-						<a class="mask" href="images/16.jpg"><img src="images/16.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-				</div>
-				<div class="col-md-3 gallery-grid">
-					<div class="gallery-grd">
-						<a class="mask" href="images/4.jpg"><img src="images/4.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-				</div>
-				<div class="col-md-3 gallery-grid">
-					<div class="gallery-grd">
-						<a class="mask" href="images/5.jpg"><img src="images/5.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-			<div class="gallery-grids">
-				<div class="col-md-3 gallery-grid">
-					<div class="gallery-grd">
-						<a class="mask" href="images/13.jpg"><img src="images/13.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-				</div>
-				<div class="col-md-3 gallery-grid">
-					<div class="gallery-grd">
-						<a class="mask" href="images/14.jpg"><img src="images/14.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-				</div>
-				<div class="col-md-3 gallery-grid">
-					<div class="gallery-grd">
-						<a class="mask" href="images/10.jpg"><img src="images/10.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-				</div>
-				<div class="col-md-3 gallery-grid">
-					<div class="gallery-grd">
-						<a class="mask" href="images/6.jpg"><img src="images/6.jpg" alt=" " class="img-responsive" /></a>
-					</div>
-				</div>
+					@endforeach
 				<div class="clearfix"> </div>
 			</div>
 		</div>
