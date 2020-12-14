@@ -287,11 +287,13 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
+                                            <th>Nama</th>
                                             <th>Gambar</th>
                                             <th colspan="2">Aksi</th>
                                         </tr>
                                         @forelse($galeri as $row)
                                         <tr>
+                                            <td>{{ $row->nama }}</td>
                                             <td class="text-center">
                                                 <img src="{{ Storage::url('public/blogs/').$row->image }}" class="rounded" height="200px">
                                             </td>
@@ -306,7 +308,7 @@
                                         </tr>
                                         @empty
                                         <div class="alert alert-danger">
-                                            Data Profile belum Tersedia.
+                                            Data Galeri belum Tersedia.
                                         </div>
                                     @endforelse
                                     </thead>

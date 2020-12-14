@@ -38,7 +38,8 @@ class DashboardGaleriController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'image'     => 'required|image|mimes:png,jpg,jpeg'
+            'image'     => 'required|image|mimes:png,jpg,jpeg',
+            'nama'     => 'required'
         ]);
 
         //upload image
@@ -46,7 +47,8 @@ class DashboardGaleriController extends Controller
         $image->storeAs('public/blogs', $image->hashName());
 
         $galeri = Galeri::create([
-            'image' => $image->hashName()
+            'image' => $image->hashName(),
+            'nama'     => $request->nama
         ]);
 
         if($galeri){
@@ -78,12 +80,16 @@ class DashboardGaleriController extends Controller
      */
     public function update(Request $request, Galeri $galeri)
     {
+        $this->validate($request, [
+            'nama'     => 'required'
+        ]);
+
         $galeri = Galeri::findOrFail($galeri->id);
 
         if($request->file('image') == "") {
 
             $galeri->update([
-                'image'     => $request->image,
+                'nama'     => $request->nama
             ]);
 
         } else {
@@ -97,6 +103,7 @@ class DashboardGaleriController extends Controller
 
             $galeri->update([
                 'image'     => $galeri->hashName(),
+                'nama'     => $request->nama
             ]);
             
         }

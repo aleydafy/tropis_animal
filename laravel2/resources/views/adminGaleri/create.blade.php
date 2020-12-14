@@ -17,6 +17,17 @@
                         <form action="{{ route('galeri.store') }}" method="POST" enctype="multipart/form-data">
                         
                             @csrf
+                            <div class="form-group">
+                                <label class="font-weight-bold">Nama</label>
+                                <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{ old('nama') }}" placeholder="Masukkan Nama Image">
+                            
+                                <!-- error message untuk title -->
+                                @error('nama')
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
 
                             <div class="form-group">
                                 <label class="font-weight-bold">GAMBAR</label>
