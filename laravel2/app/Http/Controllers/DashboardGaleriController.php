@@ -38,7 +38,7 @@ class DashboardGaleriController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'image'     => 'required|image|mimes:png,jpg,jpeg',
+            'image'     => 'required|image|mimes:png,jpg,jpeg'
         ]);
 
         //upload image
@@ -46,7 +46,7 @@ class DashboardGaleriController extends Controller
         $image->storeAs('public/blogs', $image->hashName());
 
         $galeri = Galeri::create([
-            'image'     => $image->hashName(),
+            'image' => $image->hashName()
         ]);
 
         if($galeri){
@@ -61,7 +61,7 @@ class DashboardGaleriController extends Controller
     /**
      * edit
      *
-     * @param  mixed $news
+     * @param  mixed $galeri
      * @return void
      */
     public function edit(Galeri $galeri)
@@ -73,7 +73,7 @@ class DashboardGaleriController extends Controller
      * update
      *
      * @param  mixed $request
-     * @param  mixed $news
+     * @param  mixed $galeri
      * @return void
      */
     public function update(Request $request, Galeri $galeri)
@@ -82,6 +82,10 @@ class DashboardGaleriController extends Controller
 
         if($request->file('image') == "") {
 
+            $galeri->update([
+                'image'     => $request->image,
+            ]);
+
         } else {
 
             //hapus old image
@@ -89,10 +93,10 @@ class DashboardGaleriController extends Controller
 
             //upload new image
             $galeri = $request->file('image');
-            $galeri->storeAs('public/blogs', $image->hashName());
+            $galeri->storeAs('public/blogs', $galeri->hashName());
 
             $galeri->update([
-                'image'     => $image->hashName(),
+                'image'     => $galeri->hashName(),
             ]);
             
         }
