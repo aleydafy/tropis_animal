@@ -14,8 +14,9 @@ class TentangController extends Controller
      */
     public function index()
     {
-        $tentang = Profile::latest()->paginate(1);
-        return view('tentang', compact('tentang'));
+        $tentang = Profile::first()->paginate(3);
+        $profileTerbaru = Profile::orderBy('id', 'asc')->limit(1)->first();
+        return view('tentang', compact('tentang', 'profileTerbaru'));
     }
 
     /**

@@ -1,3 +1,5 @@
+@extends('template')
+@section('content')
 <!doctype html>
 <html lang="en">
   <head>
@@ -37,3 +39,4 @@
     -->
   </body>
 </html>
+@endsection

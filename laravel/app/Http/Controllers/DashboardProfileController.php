@@ -84,11 +84,19 @@ class DashboardProfileController extends Controller
     public function update(Request $request, Profile $profile)
     {
         $request->validate([
-
+            'id' => 'required',
+            'judul' => 'required',
+            'deskripsi' => 'required'
         ]);
 
         $profile->update($request->all());
         return redirect()->route('profile.index')->with('success', 'Profile telah di Update');
+    }
+
+    public function editPost($id)
+    {
+        $profile = Profile::find($id);
+        return view('edit-profile', compact('profile'));
     }
 
     /**
@@ -97,9 +105,8 @@ class DashboardProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Profile $profile)
+    public function destroy($id)
     {
-        $profile->delete();
-        return redirect()->route('profile.index')->with('success', 'Profile berhasil didelete');
+        
     }
 }

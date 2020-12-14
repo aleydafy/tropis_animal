@@ -276,7 +276,7 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py-3 d-flex align-items-center">
                             <h6 class="m-0 font-weight-bold text-primary mr-auto">DataTables Profile</h6>
-                            <a href="/create-profile"><button class="btn btn-success">Tambah</button></a>
+                            <a href=""><button class="btn btn-success">Tambah</button></a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -288,51 +288,10 @@
                                             <th>Deskripsi</th>
                                             <th colspan="2">Aksi</th>
                                         </tr>
-                                        @foreach($profiles as $row)
-                                        <tr>
-                                            <td>{{ ++$row->id}}</td>
-                                            <td>{{ $row->judul }}</td>
-                                            <td>{{ $row->Deskripsi }}</td>
-                                            <td>                                        
-                                                <form action="{{ route('dashboardProfile.destroy', $row->id)}}" method="POST">
-                                                    <a href="{{ route('dashboardProfile.edit', $row->id)}}" class="btn btn-primary">Edit</a>
-                                                    
-                                                    @csrf
-                                                    @method('DELETE')
-
-                                                    <button class="btn btn-danger" type="submit">Delete</button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                        @endforeach
                                     </thead>
 
                                 </table>
                             </div>
-                        </div>
-                    </div>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Tambah</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="form-group">
-                                    <input type="text" class="form-control mb-2" placeholder="Judul" required>
-                                    <textarea class="form-control" name="" id="" cols="30" rows="10" placeholder="Deskripsi"></textarea>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                            <button type="button" class="btn btn-primary">Simpan</button>
-                            </div>
-                        </div>
                         </div>
                     </div>
 

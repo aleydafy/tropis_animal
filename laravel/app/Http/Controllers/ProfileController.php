@@ -11,7 +11,7 @@ class ProfileController extends Controller
     public function index()
     {
         $profiles = Profile::latest()->paginate(20);
-        return view('dashboard.profile', compact('profiles'));
+        return view('profile', compact('profiles'));
     }
 
     public function create()

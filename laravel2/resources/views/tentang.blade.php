@@ -67,16 +67,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="col-md-6 boostrap-icons-left">
 				<div class="boostrap-icons-grids">
 					<div class="col-xs-10 boostrap-icons-grid">
-						@foreach ($tentang as $item)
-                            <h2>{{ $item['judul'] }}</h2>
-                            <p class="tentang">{{ $item['Deskripsi'] }}</p>
-                        @endforeach
+						<h2>{{ $profileTerbaru['judul'] }}</h2>
+						<div class="row">
+							<div class="col-md-12">
+								<p class="tentang">{{ $profileTerbaru['Deskripsi'] }}</p>
+							</div>
+						</div>
 					</div>
 					<div class="clearfix"> </div>
 				</div>
 			</div>
 			<div class="col-md-6 boostrap-icons-right">
 				<img src="assets/img/kyaw-tun-_YIX48_4hgs-unsplash.png" alt=" " class="img-responsive" style="width: 450px;"/>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				@foreach($tentang as $item)
+				<div class="row">
+					<div class="col-md-6">
+						<h3>{{ $item->judul }}</h3>
+					</div>
+				</div>
+				<p>{{ $item->Deskripsi}}</p>
+				@endforeach
 			</div>
 		</div>
 	</div>

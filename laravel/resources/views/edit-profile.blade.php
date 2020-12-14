@@ -1,3 +1,6 @@
+@extends('template')
+ 
+@section('content')
 <!doctype html>
 <html lang="en">
   <head>
@@ -15,16 +18,16 @@
         <center>
             <h2>Profile edit</h2>
         </center>
-        <form action="{{ route('profile.update', $row->id) }}" method="POST">
+        <form method="POST" action="">
             @csrf
-            @method('PUT')
+            <input type="hidden" value="{{$profile->id}}"/>
             <div class="form-group">
                 <label for="judul">Judul</label>
-                <input type="text" name="judul" class="form-control" placeholder="Masukan Judul">
+                <input type="text" name="judul" class="form-control" value="{{$profile->judul}}">
             </div>
             <div class="form-group">
                 <label for="deskripsi">Deskripsi</label>
-                <textarea name="deskripsi" rows="10" placeholder="Masukan Deskripsi" class="form-control"></textarea>
+                <textarea name="deskripsi" rows="10" value="{{$profile->deskripsi}}" class="form-control"></textarea>
             </div>
             <button type="submit" class="w-100 btn btn-primary mt-4">Submit</button>
         </form>
@@ -38,3 +41,4 @@
     -->
   </body>
 </html>
+@endsection

@@ -27,7 +27,7 @@ Route::get('berita/{id}/edit/', [App\Http\Controllers\BeritaController::class, '
 
 Route::resource('profile', App\Http\Controllers\profileController::class);
 Route::get('create-profile', [App\Http\Controllers\DashboardProfileController::class, 'create']);
-// Route::get('edit-profile', [App\Http\Controllers\DashboardProfileController::class, 'edit']);
+Route::get('/edit-profile/{id}/edit/', [App\Http\Controllers\DashboardProfileController::class, 'editPost']);
 
 Route::resource('dashboardProfile', App\Http\Controllers\DashboardProfileController::class);
 Route::get('dashboardProfile/{id}/edit/', [App\Http\Controllers\DashboardProfileController::class, 'edit']);
@@ -36,5 +36,4 @@ Route::resource('dashboardBerita', App\Http\Controllers\DashboardBeritaControlle
 Route::get('dashboardBerita/{id}/edit/', [App\Http\Controllers\DashboardBeritaController::class, 'edit']);
 
 Route::resource('dashboardGaleri', App\Http\Controllers\DashboardGaleriController::class);
-Route::get('dashboardGaleri/{id}/edit/', [App\Http\Controllers\DashboardGaleriController::class, 'edit']);
 
