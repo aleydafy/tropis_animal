@@ -114,8 +114,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="boostrap-icons-grids">
 					<div class="col-xs-10 boostrap-icons-grid">
 						<h3>TENTANG KAMI</h3>
-						{{-- <h2>{{ $profileBaru['judul']}}</h2>
-						<p class="tentang">{{ $profileBaru['Deskripsi'] }}</p> --}}
+						@foreach ($home as $item)
+                            <h2>{{ $item['judul']}}</h2>
+                            <p class="tentang">{{ $item['Deskripsi'] }}</p>
+                        @endforeach
 					</div>
 					<div class="clearfix"> </div>
 					<br><br>
@@ -191,17 +193,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<h3 style="font-size: 15px;margin: 0;text-transform: capitalize;color: #537bc4;font-family: 'Abril Fatface', cursive;">BERITA</h3>
 				<h2 style="color: black;font-size: 25px;margin: 1em 0 0;font-family: 'Abril Fatface', cursive;">Baca Berita Terbaru Kami <br> Dalam Tropis Animals</h2><br>
 			<div class="row">
-				{{-- @foreach($beritaBaru as $row)
+				@foreach($berita as $item)
 				<div class="col-md-4 mb-3">
 					<div class="card" style="width: 20rem;">
-  						<img src="{{ asset('assets/img/'.$row->gambar) }}" class="card-img-top" alt="...">
+                        <img src="{{ Storage::url('public/blogs/').$item->image }}" class="img-fluid">
 						<div class="card-body">
-							<h5 class="card-title">{{ $row->judul }}</h5>
-							<p class="card-text">{{ $row->konten }}</p>
+							<h5 class="card-title">{{ $item->judul }}</h5>
+							<p class="card-text">{{ $item->konten }}</p>
 						</div>
 					</div>
 				</div>
-				@endforeach --}}
+				@endforeach
 			</div>
 		</div>
 	</div>
@@ -210,19 +212,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- boostrap-icons -->
 <div class="boostrap-icons">
 		<div class="container">
-				<div class="boostrap-icons-grids">
-					<div class="col-xs-10 boostrap-icons-grid">
-						<h3>GALERI</h3>
-						<h2>Lihat Lebih Banyak Hewan Tropis <br> Pada Galeri Kami</h2><br>
-					</div>
-				</div>
-				<div class="col-md-auto w-100">
-					{{-- @foreach($galeriBaru as $row)
-					<img src="{{ asset('assets/img/'.$row->gambar) }}" class="img-fluid" alt="...">
-					@endforeach --}}
-				</div>
-				
-	</div>
+            <div class="boostrap-icons-grids">
+                <div class="col-xs-10 boostrap-icons-grid">
+                    <h3>GALERI</h3>
+                    <h2>Lihat Lebih Banyak Hewan Tropis <br> Pada Galeri Kami</h2><br>
+                </div>
+            </div>   
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                  @foreach($galeri as $key => $slider)
+                  <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                    <img src="{{ Storage::url('public/blogs/').$slider->image }}" class="img-fluid" alt="...">
+                  </div>
+                  @endforeach
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>          
+	    </div>
 </div>
 <!-- //boostrap-icons -->
 <!-- footer -->

@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Profile;
+use App\Models\Berita;
+use App\Models\Blog;
+use Illuminate\Support\Facades\Storage;
+
 
 class HomeController extends Controller
 {
@@ -13,7 +18,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('index');
+        $home = Profile::latest()->paginate(1);
+        $berita = Berita::latest()->paginate(6);
+        $galeri = Blog::latest()->paginate(4);
+        return view('index', compact('home', 'berita', 'galeri'));
     }
 
     /**

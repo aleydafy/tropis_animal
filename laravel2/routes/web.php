@@ -19,7 +19,8 @@ Route::resource('berita', BeritaController::class);
 Route::resource('galeri', GaleriController::class);
 Route::resource('kontak', KontakController::class);
 
-
+// Crud
 Route::resource('blog', BlogController::class);
 Route::resource('profile', DashboardProfileController::class);
 Route::resource('news', DashboardNewsController::class);
+// 
